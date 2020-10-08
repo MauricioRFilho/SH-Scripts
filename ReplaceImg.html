@@ -1,12 +1,14 @@
-<div class="prod-image imgLiquidFill imgLiquid imgLiquid_bgSize imgLiquid_ready" style="height: 250px;background-image: url('//images.tcdn.com.br/img/img_prod/593567/blusinha_plus_size_18_1_20171003111126.jpg');background-size: contain;background-position: center center;background-repeat: no-repeat;">
+<div>
     <div class="prod-image-overflow">
-        <img src="//images.tcdn.com.br/img/img_prod/593567/180_blusinha_plus_size_18_1_20171003111126.jpg" alt="Blusinha Plus Size Preta" title="Blusinha Plus Size Preta" style="display: none;">
+        <img img-src="{{{ImageLink}}}" alt="{{Title}}" style="display: block;">
     </div>
 </div>
-vai deixar o img-src fora com o {{{ImageLink}}} mandar remover 180_
+
 
 <script>
-    jQuery(".smarthint .bf-shelf-item__img-front img").each(function() {
+    //vai deixar o img-src fora com o {{{ImageLink}}} mandar remover 180_
+    //caso necessite de outras alterações o script pode ser alterado sem problema
+    jQuery(".smarthint .prod-image-overflow img").each(function() {
         var imgsrc = jQuery(this).attr('img-src');
         imgsrc = imgsrc.replace("180_", "");
         jQuery(this).attr("src", imgsrc);

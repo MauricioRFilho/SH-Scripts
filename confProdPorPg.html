@@ -33,16 +33,17 @@
             });
         }
     }
-    var i = 0;
+		count++;
+		if (count <= 10) {
+          setTimeout(function() {
+			ajustarSlick(quantidade, count);
+          }, 300);
+		}
+
+    }
+
     var pagina = SmartHint.Framework.GetPageType();
     var quantidade = pagina == 'category' ? 3 : 4;
 
-    var i = 0;
-
-    setInterval(function () {
-        if (i <= 10) {
-            ajustarSlick(quantidade);
-            i++;
-        }
-    }, 300);
+	ajustarSlick(quantidade, 0);
 </script>

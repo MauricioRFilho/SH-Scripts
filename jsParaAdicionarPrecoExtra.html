@@ -1,0 +1,49 @@
+
+    
+    <script>
+        $('.prod-wrapper').mouseover(function () {
+            $(this).parent().find('.prod-action').css('opacity', '1');
+        });
+    
+        $('.prod-wrapper').mouseout(function () {
+            $(this).parent().find('.prod-action').css('opacity', '0');
+        });
+    
+        $('.prod-image').mouseover(function () {
+            $(this).parent().find('.prod-hover-image').css('opacity', '1');
+        });
+    
+        $('.prod-image').mouseout(function () {
+            $(this).parent().find('.prod-hover-image').css('opacity', '0');
+        });
+        
+
+
+        // COLOCAR PONTO 
+        jQuery(".smarthint").find(".smarthint-value").each(function () {
+            var number = jQuery(this).text();
+            var parts = number.toString().split(",");
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            number = parts.join(",");
+            jQuery(this).text(number);
+        });
+        // COLOCAR PONTO 
+
+    
+    jQuery(".smarthint .price").each(function() {
+        var parentElement = jQuery(this);
+    
+        jQuery(this).find(".buy-price .smarthint-value").each(function() {
+            var number = jQuery(this).attr("value");
+            if (number != undefined && number != "") {
+                if (jQuery(parentElement).find(".onsight-price").length == 0) {
+                    number = (Math.ceil(number * 90)/ 100).toLocaleString("pt-BR", {minimumFractionDigits: 2});
+                    var priceElement = '<p class="onsight-price" style="height: 36px;font-size: 22px;"><strong>R$ ' + number + '</strong> no boleto</p>';
+                    jQuery(parentElement).append(priceElement);
+                }
+            }
+        });
+    })
+    </script>
+    
+    

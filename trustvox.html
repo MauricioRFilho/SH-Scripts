@@ -1,0 +1,36 @@
+<!-- <script>
+  jQuery(document).ready(function () {
+    var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
+    _trustvox_shelf_rate.push(['_storeId', '106319']);
+    (function () {
+      jQuery('.smarthint .trustvox-shelf-container').show();
+      var tv = document.createElement('script');
+      tv.type = 'text/javascript';
+      tv.async = true;
+      tv.src = '//rate.trustvox.com.br/widget.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(tv, s);
+    })();
+  });
+</script> -->
+<div class="shtv" data-trustvox-product-code="{{ItemGroupId}}"></div>
+<script>
+  function stars() {
+    var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
+    _trustvox_shelf_rate.push(['_storeId', '108721']);
+    (function () {
+      jQuery('.smarthint .shtv').show();
+      var tv = document.createElement('script');
+      tv.type = 'text/javascript';
+      tv.async = true;
+      tv.src = '//rate.trustvox.com.br/widget.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(tv, s);
+    })();
+  };
+  var i = 0;
+  while (i < 10) {
+    setTimeout(stars, 500);
+    i++;
+  }
+</script>

@@ -1,0 +1,22 @@
+<div class="botoesSpot">
+    <a href="{{{Link}}}" class="bt comprar">+ detalhes</a>
+    <input type="text" id="produto-spot-quantidade-{{ProductId}}" class="input-spot-quantidade" value="1" min="1" max="999">
+    <span class="maismenosspot"><span id="maisQtd" class="maisQtd"></span><span id="menosQtd" class="menosQtd"></span></span>
+    <a href="{{{Link}}}" class="bt adicionar">Comprar<i class="icon addCarrinho" /></a>
+    <label id="mensagem-erro-spot" class="hide error erro" />
+</div>
+<script>
+    $(".smarthint .botoesSpot").each(function() {
+        $(this).find(".maisQtd").unbind("click");
+        $(this).find(".maisQtd").click(function() {
+            $(this).parent().prev().val(parseInt($(this).parent().prev().val()) + 1);
+        });
+        $(this).find(".menosQtd").unbind("click");
+        $(this).find(".menosQtd").click(function() {
+            $(this).parent().prev().val(parseInt($(this).parent().prev().val()) - 1);
+            if ($(this).parent().prev().val() == "0") {
+                $(this).parent().prev().val("1");
+            }
+        });
+    });
+</script>

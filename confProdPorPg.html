@@ -1,0 +1,48 @@
+
+<script>
+    function ajustarSlick(quantidade) {
+        if ((typeof jQuery.fn.slick !== 'undefined')) {
+            jQuery(".slick-that").not('.slick-initialized').slick({
+                dots: false,
+                infinite: true,
+                slidesToShow: quantidade,
+                slidesToScroll: quantidade,
+                useTransform: true,
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    }
+                ]
+            });
+        }
+    }
+    var i = 0;
+    var pagina = SmartHint.Framework.GetPageType();
+    var quantidade = pagina == 'category' ? 3 : 4;
+
+    var i = 0;
+
+    setInterval(function () {
+        if (i <= 10) {
+            ajustarSlick(quantidade);
+            i++;
+        }
+    }, 300);
+</script>

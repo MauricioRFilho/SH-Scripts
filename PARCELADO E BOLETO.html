@@ -1,0 +1,55 @@
+{{#HasSalePrice}}<span class="max_installments" value="{{SalePrice}}"></span>{{/HasSalePrice}} {{^HasSalePrice}}
+<span class="max_installments" value="{{Price}}"></span>{{/HasSalePrice}}
+<script>
+    jQuery(".smarthint .max_installments").each(function() {
+        var parentElement = jQuery(this);
+        var valorMinimoParcela = 15;
+        var numeroMaximoParcelas = 10;
+        var precoProduto = parseFloat(jQuery(this).attr("value"));
+        var numeroParcelasValido = 1;
+        var valorParcelaValido = precoProduto;
+
+        if (precoProduto != undefined && precoProduto != "") {
+            if (jQuery(parentElement).find(".preco-parcela").length == 0) {
+
+                var numeroParcelas = 0;
+                while (numeroParcelas <= numeroMaximoParcelas && valorParcelaValido >= valorMinimoParcela) {
+                    var valorParcela = (precoProduto / numeroParcelas);
+                    if (valorParcela >= valorMinimoParcela) {
+                        numeroParcelasValido = numeroParcelas;
+                        var valorParcela = (valorParcela * 100) / 100;
+                        valorParcelaValido = valorParcela;
+                    }
+
+                    numeroParcelas++;
+                }
+                valorParcelaValido = valorParcelaValido.toLocaleString("pt-BR", {
+                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 2
+                });
+                if (numeroParcelasValido > 1) {
+                    var priceElement = '<div><span class="preco-parcela cor-principal"><strong>' +
+                        numeroParcelasValido + 'x</strong>de<strong class="cor-principal titulo">R$ ' +
+                        valorParcelaValido + '</strong></span></div>';
+                    jQuery(parentElement).append(priceElement);
+                }
+            }
+        }
+    });
+</script>
+<script>
+    jQuery(".smarthint .avista").each(function() {
+        var pElement = jQuery(this);
+        var number = jQuery(this).attr("value");
+        if (number != undefined && number != "") {
+            if (jQuery(pElement).find(".deposito").length == 0) {
+                number = (Math.ceil(number * 90) / 100).toLocaleString("pt-BR", {
+                    minimumFractionDigits: 2, maximumFractionDigits:2
+                });
+                var depElement = 'ou <strong class="cor-secundaria deposito">' + number +
+                    '</strong> via Depósito';
+                jQuery(pElement).append(depElement);
+            }
+        }
+    });
+</script>
